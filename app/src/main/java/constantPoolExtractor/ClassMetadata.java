@@ -117,7 +117,12 @@ public class ClassMetadata {
 
         @Override
         public String toString() {
+            return this.toString(0);
+        }
+
+        public String toString(int offset) {
             StringBuilder sb = new StringBuilder();
+            sb.append(" ".repeat(Math.max(0, offset)));
             sb.append(padRight(tagMapper.get((int) tag), tagLength)).append(" ");
             if (obj != null) {
                 sb.append(obj).append(" ");
@@ -128,7 +133,9 @@ public class ClassMetadata {
             if (link2 != null) {
                 sb.append(".#").append(link2);
             }
-            return sb.toString();
+            String suffix1 = link1 == null ? "" : "\n" + constantPoolItems[link1 - 1].toString(offset + 4);
+            String suffix2 = link2 == null ? "" : "\n" + constantPoolItems[link2 - 1].toString(offset + 4);
+            return sb.toString() + suffix1 + suffix2;
         }
 
         private String padRight(String s, int n) {
