@@ -11,18 +11,14 @@ import java.nio.file.Paths;
 public class App {
 
     public static void main(String[] args) {
-        if (args.length!=1){
+        if (args.length != 1) {
             System.out.println("Please provide filename");
             return;
         }
-        String userDirectory = Paths.get("")
-                .toAbsolutePath()
-                .toString();
-        System.out.println(userDirectory);
         File file = new File(args[0]);
         byte[] fileContent;
         try {
-             fileContent = Files.readAllBytes(file.toPath());
+            fileContent = Files.readAllBytes(file.toPath());
 
         } catch (IOException e) {
             e.printStackTrace();
