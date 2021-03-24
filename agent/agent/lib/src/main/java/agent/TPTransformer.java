@@ -25,22 +25,32 @@ public class TPTransformer implements ClassFileTransformer {
                 ctClass.addField(avgField);
                 CtField countField = CtField.make("static long cnt = 0L;", ctClass);
                 ctClass.addField(countField);
+                CtField minField = CtField.make("static long min = 0x7FFFFFFFFFFFFFFFL;", ctClass);
+                ctClass.addField(minField);
+                CtField maxField = CtField.make("static long max = 0L;", ctClass);
+                ctClass.addField(maxField);
                 CtMethod[] methods = ctClass.getDeclaredMethods();
                 for (CtMethod method : methods) {
                     if (method.getName().equals("processTransaction")) {
                         try {
                             method.addLocalVariable("st", CtClass.longType);
+                            method.addLocalVariable("fin", CtClass.longType);
                             method.insertBefore("txNum+=99;\n" +
                                     "st = System.currentTimeMillis();");
                             method.insertAfter(
-                                    "avg = (System.currentTimeMillis() - st + avg * cnt) / (cnt + 1);\n" +
+                                    "fin = System.currentTimeMillis();\n"+
+                                    "avg = (fin - st + avg * cnt) / (cnt + 1);\n" +
+                                            "if (fin - st > max) max = fin-st;\n"+
+                                            "if (fin - st < min) min = fin-st;\n"+
                                             "cnt++;");
                         } catch (CannotCompileException e) {
                             throw new RuntimeException(e);
                         }
                     }
                     if (method.getName().equals("main")) {
-                        method.insertAfter("System.out.println(\"Average time is \"+avg+\" ms\");");
+                        method.insertAfter("System.out.println(\"Average time is \"+avg+\" ms\");\n" +
+                                "System.out.println(\"Maximum time is \"+max+\" ms\");\n"+
+                                "System.out.println(\"Minimum time is \"+min+\" ms\");\n");
                     }
                 }
                 try {
