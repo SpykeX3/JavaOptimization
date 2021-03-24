@@ -2,11 +2,23 @@ package agent;
 
 import javassist.*;
 
-import java.io.IOException;
+import java.io.*;
 import java.lang.instrument.ClassFileTransformer;
+import java.nio.charset.StandardCharsets;
 import java.security.ProtectionDomain;
 
 public class TPTransformer implements ClassFileTransformer {
+
+    private PrintWriter os;
+
+    public TPTransformer() {
+        try {
+            os = new PrintWriter("loadedClasses.txt", StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+    }
 
     @Override
     public byte[] transform(final ClassLoader loader,
@@ -15,7 +27,7 @@ public class TPTransformer implements ClassFileTransformer {
                             final ProtectionDomain protectionDomain,
                             final byte[] classfileBuffer) {
         byte[] byteCode = classfileBuffer;
-        //System.out.println(className);
+        log(className);
         if ("ru.fit.javaperf.TransactionProcessor".equals(className.replaceAll("/", "."))) {
             try {
                 ClassPool cPool = ClassPool.getDefault();
@@ -38,10 +50,10 @@ public class TPTransformer implements ClassFileTransformer {
                             method.insertBefore("txNum+=99;\n" +
                                     "st = System.currentTimeMillis();");
                             method.insertAfter(
-                                    "fin = System.currentTimeMillis();\n"+
-                                    "avg = (fin - st + avg * cnt) / (cnt + 1);\n" +
-                                            "if (fin - st > max) max = fin-st;\n"+
-                                            "if (fin - st < min) min = fin-st;\n"+
+                                    "fin = System.currentTimeMillis();\n" +
+                                            "avg = (fin - st + avg * cnt) / (cnt + 1);\n" +
+                                            "if (fin - st > max) max = fin-st;\n" +
+                                            "if (fin - st < min) min = fin-st;\n" +
                                             "cnt++;");
                         } catch (CannotCompileException e) {
                             throw new RuntimeException(e);
@@ -49,7 +61,7 @@ public class TPTransformer implements ClassFileTransformer {
                     }
                     if (method.getName().equals("main")) {
                         method.insertAfter("System.out.println(\"Average time is \"+avg+\" ms\");\n" +
-                                "System.out.println(\"Maximum time is \"+max+\" ms\");\n"+
+                                "System.out.println(\"Maximum time is \"+max+\" ms\");\n" +
                                 "System.out.println(\"Minimum time is \"+min+\" ms\");\n");
                     }
                 }
@@ -68,5 +80,10 @@ public class TPTransformer implements ClassFileTransformer {
             }
         }
         return byteCode;
+    }
+
+    private void log(String message) {
+        os.write(message + "\n");
+        os.flush();
     }
 }
