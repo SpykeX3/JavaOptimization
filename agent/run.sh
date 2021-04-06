@@ -4,6 +4,3 @@ cd agent && gradle shadowJar && cd .. && cp agent/lib/build/libs/agent.jar agent
 java -javaagent:agent.jar -jar demo.jar
 rm agent.jar
 rm demo.jar
-echo "Classes loaded:"
-wc -l <loadedClasses.txt
-rm loadedClasses.txt

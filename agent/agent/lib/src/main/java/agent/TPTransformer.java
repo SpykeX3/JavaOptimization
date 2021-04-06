@@ -4,20 +4,15 @@ import javassist.*;
 
 import java.io.*;
 import java.lang.instrument.ClassFileTransformer;
-import java.nio.charset.StandardCharsets;
 import java.security.ProtectionDomain;
+import java.util.List;
 
 public class TPTransformer implements ClassFileTransformer {
 
-    private PrintWriter os;
+    private final List<String> classes;
 
-    public TPTransformer() {
-        try {
-            os = new PrintWriter("loadedClasses.txt", StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
+    public TPTransformer(List<String> classes) {
+        this.classes = classes;
     }
 
     @Override
@@ -27,7 +22,7 @@ public class TPTransformer implements ClassFileTransformer {
                             final ProtectionDomain protectionDomain,
                             final byte[] classfileBuffer) {
         byte[] byteCode = classfileBuffer;
-        log(className);
+        classes.add(className);
         if ("ru.fit.javaperf.TransactionProcessor".equals(className.replaceAll("/", "."))) {
             try {
                 ClassPool cPool = ClassPool.getDefault();
@@ -80,10 +75,5 @@ public class TPTransformer implements ClassFileTransformer {
             }
         }
         return byteCode;
-    }
-
-    private void log(String message) {
-        os.write(message + "\n");
-        os.flush();
     }
 }
