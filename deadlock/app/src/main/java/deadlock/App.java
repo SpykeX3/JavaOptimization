@@ -9,10 +9,10 @@ public class App {
     static final MyLatch latch = new MyLatch(2);
 
 
-    public static void main(String[] args) throws InterruptedException {
-        synchronized (lock1){
+    public static void main(String[] args) {
+        synchronized (lock1) {
             new Thread(() -> {
-                synchronized (lock2){
+                synchronized (lock2) {
                     latch.dec();
                     try {
                         latch.await();
@@ -20,7 +20,7 @@ public class App {
                     } catch (InterruptedException e) {
                         return;
                     }
-                    synchronized (lock1){
+                    synchronized (lock1) {
                         System.out.println("I am a child thread!");
                     }
                 }
@@ -32,7 +32,8 @@ public class App {
 
             } catch (InterruptedException e) {
                 return;
-            }            synchronized (lock2){
+            }
+            synchronized (lock2) {
                 System.out.println("Main is here!");
             }
         }
