@@ -1,0 +1,287 @@
+> Task :app:compileJava
+> Task :app:processResources NO-SOURCE
+> Task :app:classes
+> Task :app:compileTestJava
+> Task :app:processTestResources NO-SOURCE
+> Task :app:testClasses
+> Task :app:compileJmhJava
+> Task :app:processJmhResources NO-SOURCE
+> Task :app:jmhClasses
+
+> Task :app:jmhRunBytecodeGenerator
+Processing 1 classes from /Users/vvchernikov/IdeaProjects/constantPoolExtractor/jmh/app/build/classes/java/jmh with "reflection" generator
+Writing out Java source to /Users/vvchernikov/IdeaProjects/constantPoolExtractor/jmh/app/build/jmh-generated-sources and resources to /Users/vvchernikov/IdeaProjects/constantPoolExtractor/jmh/app/build/jmh-generated-resources
+Processing 1 classes from /Users/vvchernikov/IdeaProjects/constantPoolExtractor/jmh/app/build/classes/java/test with "reflection" generator
+Writing out Java source to /Users/vvchernikov/IdeaProjects/constantPoolExtractor/jmh/app/build/jmh-generated-sources and resources to /Users/vvchernikov/IdeaProjects/constantPoolExtractor/jmh/app/build/jmh-generated-resources
+
+> Task :app:jmhCompileGeneratedClasses
+> Task :app:jmhJar
+
+> Task :app:jmh
+# JMH version: 1.28
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+12-LTS
+# VM invoker: /Users/vvchernikov/Library/Java/JavaVirtualMachines/corretto-11.0.9.1/Contents/Home/bin/java
+# VM options: -Dfile.encoding=UTF-8 -Djava.io.tmpdir=/Users/vvchernikov/IdeaProjects/constantPoolExtractor/jmh/app/build/tmp/jmh -Duser.country=RU -Duser.language=en -Duser.variant
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jmh.IntegerBenchmark.benchmarkCastChecker
+
+# Run progress: 0.00% complete, ETA 00:25:00
+# Fork: 1 of 5
+# Warmup Iteration   1: 596394.619 ops/s
+# Warmup Iteration   2: 636982.970 ops/s
+# Warmup Iteration   3: 637643.699 ops/s
+# Warmup Iteration   4: 643088.014 ops/s
+# Warmup Iteration   5: 601964.146 ops/s
+Iteration   1: 580566.506 ops/s
+Iteration   2: 627933.924 ops/s
+Iteration   3: 637892.213 ops/s
+Iteration   4: 641597.171 ops/s
+Iteration   5: 649498.487 ops/s
+
+# Run progress: 6.67% complete, ETA 00:23:25
+# Fork: 2 of 5
+# Warmup Iteration   1: 646938.812 ops/s
+# Warmup Iteration   2: 655814.791 ops/s
+# Warmup Iteration   3: 656928.629 ops/s
+# Warmup Iteration   4: 656251.693 ops/s
+# Warmup Iteration   5: 659410.013 ops/s
+Iteration   1: 647256.528 ops/s
+Iteration   2: 649173.739 ops/s
+Iteration   3: 659292.123 ops/s
+Iteration   4: 657014.787 ops/s
+Iteration   5: 603712.172 ops/s
+
+# Run progress: 13.33% complete, ETA 00:21:45
+# Fork: 3 of 5
+# Warmup Iteration   1: 651285.940 ops/s
+# Warmup Iteration   2: 662116.867 ops/s
+# Warmup Iteration   3: 655786.815 ops/s
+# Warmup Iteration   4: 652270.773 ops/s
+# Warmup Iteration   5: 651807.699 ops/s
+Iteration   1: 660165.945 ops/s
+Iteration   2: 664891.516 ops/s
+Iteration   3: 657078.352 ops/s
+Iteration   4: 660004.611 ops/s
+Iteration   5: 667253.298 ops/s
+
+# Run progress: 20.00% complete, ETA 00:20:04
+# Fork: 4 of 5
+# Warmup Iteration   1: 653762.610 ops/s
+# Warmup Iteration   2: 661253.411 ops/s
+# Warmup Iteration   3: 667599.812 ops/s
+# Warmup Iteration   4: 666378.752 ops/s
+# Warmup Iteration   5: 659497.344 ops/s
+Iteration   1: 665676.103 ops/s
+Iteration   2: 665293.685 ops/s
+Iteration   3: 664298.001 ops/s
+Iteration   4: 666048.378 ops/s
+Iteration   5: 665868.502 ops/s
+
+# Run progress: 26.67% complete, ETA 00:18:24
+# Fork: 5 of 5
+# Warmup Iteration   1: 651759.014 ops/s
+# Warmup Iteration   2: 669766.893 ops/s
+# Warmup Iteration   3: 668614.616 ops/s
+# Warmup Iteration   4: 662998.658 ops/s
+# Warmup Iteration   5: 670909.715 ops/s
+Iteration   1: 667516.739 ops/s
+Iteration   2: 661827.465 ops/s
+Iteration   3: 671361.818 ops/s
+Iteration   4: 669750.519 ops/s
+Iteration   5: 667846.460 ops/s
+
+
+Result "jmh.IntegerBenchmark.benchmarkCastChecker":
+  653152.762 ±(99.9%) 16139.468 ops/s [Average]
+  (min, avg, max) = (580566.506, 653152.762, 671361.818), stdev = 21545.728
+  CI (99.9%): [637013.294, 669292.229] (assumes normal distribution)
+
+
+# JMH version: 1.28
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+12-LTS
+# VM invoker: /Users/vvchernikov/Library/Java/JavaVirtualMachines/corretto-11.0.9.1/Contents/Home/bin/java
+# VM options: -Dfile.encoding=UTF-8 -Djava.io.tmpdir=/Users/vvchernikov/IdeaProjects/constantPoolExtractor/jmh/app/build/tmp/jmh -Duser.country=RU -Duser.language=en -Duser.variant
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jmh.IntegerBenchmark.benchmarkDigitChecker
+
+# Run progress: 33.33% complete, ETA 00:16:44
+# Fork: 1 of 5
+# Warmup Iteration   1: 25286534.735 ops/s
+# Warmup Iteration   2: 25764342.889 ops/s
+# Warmup Iteration   3: 26373282.501 ops/s
+# Warmup Iteration   4: 23181305.340 ops/s
+# Warmup Iteration   5: 26347674.956 ops/s
+Iteration   1: 26247363.935 ops/s
+Iteration   2: 26358179.799 ops/s
+Iteration   3: 26327788.849 ops/s
+Iteration   4: 26226427.000 ops/s
+Iteration   5: 26452415.314 ops/s
+
+# Run progress: 40.00% complete, ETA 00:15:03
+# Fork: 2 of 5
+# Warmup Iteration   1: 25285055.615 ops/s
+# Warmup Iteration   2: 25444124.706 ops/s
+# Warmup Iteration   3: 26388218.781 ops/s
+# Warmup Iteration   4: 26455194.405 ops/s
+# Warmup Iteration   5: 26351253.147 ops/s
+Iteration   1: 26407480.182 ops/s
+Iteration   2: 26401153.306 ops/s
+Iteration   3: 25934508.031 ops/s
+Iteration   4: 26485783.406 ops/s
+Iteration   5: 26581111.439 ops/s
+
+# Run progress: 46.67% complete, ETA 00:13:23
+# Fork: 3 of 5
+# Warmup Iteration   1: 24747627.942 ops/s
+# Warmup Iteration   2: 25745896.031 ops/s
+# Warmup Iteration   3: 26496216.585 ops/s
+# Warmup Iteration   4: 26340142.114 ops/s
+# Warmup Iteration   5: 26224178.370 ops/s
+Iteration   1: 26527900.843 ops/s
+Iteration   2: 26364265.394 ops/s
+Iteration   3: 26410436.210 ops/s
+Iteration   4: 26278729.224 ops/s
+Iteration   5: 26407636.701 ops/s
+
+# Run progress: 53.33% complete, ETA 00:11:42
+# Fork: 4 of 5
+# Warmup Iteration   1: 25142958.762 ops/s
+# Warmup Iteration   2: 25954703.154 ops/s
+# Warmup Iteration   3: 26032479.469 ops/s
+# Warmup Iteration   4: 26309305.821 ops/s
+# Warmup Iteration   5: 26532358.184 ops/s
+Iteration   1: 26410163.714 ops/s
+Iteration   2: 26368620.282 ops/s
+Iteration   3: 26619375.114 ops/s
+Iteration   4: 26215441.273 ops/s
+Iteration   5: 26503398.670 ops/s
+
+# Run progress: 60.00% complete, ETA 00:10:02
+# Fork: 5 of 5
+# Warmup Iteration   1: 25221405.677 ops/s
+# Warmup Iteration   2: 25807256.481 ops/s
+# Warmup Iteration   3: 26554250.501 ops/s
+# Warmup Iteration   4: 26661407.196 ops/s
+# Warmup Iteration   5: 26401570.034 ops/s
+Iteration   1: 26666481.720 ops/s
+Iteration   2: 26715104.901 ops/s
+Iteration   3: 26523292.388 ops/s
+Iteration   4: 26490286.908 ops/s
+Iteration   5: 26771763.211 ops/s
+
+
+Result "jmh.IntegerBenchmark.benchmarkDigitChecker":
+  26427804.312 ±(99.9%) 133216.340 ops/s [Average]
+  (min, avg, max) = (25934508.031, 26427804.312, 26771763.211), stdev = 177840.002
+  CI (99.9%): [26294587.973, 26561020.652] (assumes normal distribution)
+
+
+# JMH version: 1.28
+# VM version: JDK 11.0.9.1, OpenJDK 64-Bit Server VM, 11.0.9.1+12-LTS
+# VM invoker: /Users/vvchernikov/Library/Java/JavaVirtualMachines/corretto-11.0.9.1/Contents/Home/bin/java
+# VM options: -Dfile.encoding=UTF-8 -Djava.io.tmpdir=/Users/vvchernikov/IdeaProjects/constantPoolExtractor/jmh/app/build/tmp/jmh -Duser.country=RU -Duser.language=en -Duser.variant
+# Blackhole mode: full + dont-inline hint
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jmh.IntegerBenchmark.benchmarkRegexChecker
+
+# Run progress: 66.67% complete, ETA 00:08:22
+# Fork: 1 of 5
+# Warmup Iteration   1: 2549230.737 ops/s
+# Warmup Iteration   2: 2480615.204 ops/s
+# Warmup Iteration   3: 2550645.688 ops/s
+# Warmup Iteration   4: 2615369.199 ops/s
+# Warmup Iteration   5: 2624817.924 ops/s
+Iteration   1: 2619551.884 ops/s
+Iteration   2: 2623664.392 ops/s
+Iteration   3: 2625579.261 ops/s
+Iteration   4: 2655260.522 ops/s
+Iteration   5: 2639658.101 ops/s
+
+# Run progress: 73.33% complete, ETA 00:06:41
+# Fork: 2 of 5
+# Warmup Iteration   1: 2571498.778 ops/s
+# Warmup Iteration   2: 2684056.871 ops/s
+# Warmup Iteration   3: 2684355.762 ops/s
+# Warmup Iteration   4: 2702008.804 ops/s
+# Warmup Iteration   5: 2676234.884 ops/s
+Iteration   1: 2681678.799 ops/s
+Iteration   2: 2679336.830 ops/s
+Iteration   3: 2696457.347 ops/s
+Iteration   4: 2670510.637 ops/s
+Iteration   5: 2691567.918 ops/s
+
+# Run progress: 80.00% complete, ETA 00:05:01
+# Fork: 3 of 5
+# Warmup Iteration   1: 2585650.037 ops/s
+# Warmup Iteration   2: 2677902.755 ops/s
+# Warmup Iteration   3: 2628672.508 ops/s
+# Warmup Iteration   4: 2660708.155 ops/s
+# Warmup Iteration   5: 2677485.000 ops/s
+Iteration   1: 2694266.177 ops/s
+Iteration   2: 2652598.529 ops/s
+Iteration   3: 2701603.697 ops/s
+Iteration   4: 2677956.741 ops/s
+Iteration   5: 2701379.250 ops/s
+
+# Run progress: 86.67% complete, ETA 00:03:20
+# Fork: 4 of 5
+# Warmup Iteration   1: 2542741.680 ops/s
+# Warmup Iteration   2: 2658920.570 ops/s
+# Warmup Iteration   3: 2680522.661 ops/s
+# Warmup Iteration   4: 2667132.940 ops/s
+# Warmup Iteration   5: 2671466.348 ops/s
+Iteration   1: 2653100.001 ops/s
+Iteration   2: 2665214.703 ops/s
+Iteration   3: 2675634.310 ops/s
+Iteration   4: 2632276.992 ops/s
+Iteration   5: 2674313.336 ops/s
+
+# Run progress: 93.33% complete, ETA 00:01:40
+# Fork: 5 of 5
+# Warmup Iteration   1: 2638420.971 ops/s
+# Warmup Iteration   2: 2716304.918 ops/s
+# Warmup Iteration   3: 2715674.936 ops/s
+# Warmup Iteration   4: 2716269.263 ops/s
+# Warmup Iteration   5: 2731141.233 ops/s
+Iteration   1: 2716323.058 ops/s
+Iteration   2: 2731178.312 ops/s
+Iteration   3: 2723874.530 ops/s
+Iteration   4: 2721185.787 ops/s
+Iteration   5: 2699445.670 ops/s
+
+
+Result "jmh.IntegerBenchmark.benchmarkRegexChecker":
+  2676144.671 ±(99.9%) 24295.376 ops/s [Average]
+  (min, avg, max) = (2619551.884, 2676144.671, 2731178.312), stdev = 32433.632
+  CI (99.9%): [2651849.295, 2700440.048] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:25:06
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                Mode  Cnt         Score        Error  Units
+IntegerBenchmark.benchmarkCastChecker   thrpt   25    653152.762 ±  16139.468  ops/s
+IntegerBenchmark.benchmarkDigitChecker  thrpt   25  26427804.312 ± 133216.340  ops/s
+IntegerBenchmark.benchmarkRegexChecker  thrpt   25   2676144.671 ±  24295.376  ops/s
+
+BUILD SUCCESSFUL in 25m 9s
+7 actionable tasks: 7 executed
